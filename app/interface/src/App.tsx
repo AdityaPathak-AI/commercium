@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
   const [health, setHealth] = useState<string | null>(null)
+  const [author, setAuthor] = useState<{ name?: string; blog?: string; bio?: string; location?: string } | null>(null)
 
   useEffect(() => {
     const fetchHealth = async () => {
@@ -22,17 +21,42 @@ function App() {
     void fetchHealth()
   }, [])
 
+  useEffect(() => {
+    const fetchAuthor = async () => {
+      try {
+        const res = await fetch('https://api.github.com/users/AdityaPathak-AI')
+        if (!res.ok) throw new Error(res.statusText)
+        const data = await res.json()
+        setAuthor({
+          name: data.name,
+          blog: data.blog,
+          bio: data.bio,
+          location: data.location,
+        })
+      } catch (err) {
+        console.error('Error fetching author GitHub data:', err)
+        setAuthor(null)
+      }
+    }
+
+    void fetchAuthor()
+  }, [])
+
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+     <div>
+      <h3>Author</h3>
+      {author ? (
+        <div style={{ textAlign: 'left' }}>
+          <div><strong>Name:</strong> {author.name ?? '-'}</div>
+          <div><strong>Blog:</strong> {author.blog ? <a href={author.blog} target="_blank" rel="noreferrer">{author.blog}</a> : '-'}</div>
+          <div><strong>Bio:</strong> {author.bio ?? '-'}</div>
+          <div><strong>Location:</strong> {author.location ?? '-'}</div>
+        </div>
+      ) : (
+        <div>Loading author...</div>
+      )}
+     </div>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -44,9 +68,6 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
