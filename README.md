@@ -20,7 +20,7 @@ Commercium is a modular commerce admin platform focused on clean, testable build
 │   └── interface/    # API endpoints, controllers, and route handlers
 ```
 
-Note: The project is currently organized around the `app/` directory. The previous monorepo-style `backend/` and `frontend/` layout is planned but not present in this workspace yet.
+Note: The project is currently organized around the `app/` directory. The previous monorepo-style `data-layer/` and `interface/` layout is planned but not present in this workspace yet.
 
 ## Getting Started
 
@@ -28,14 +28,14 @@ Note: The project is currently organized around the `app/` directory. The previo
 2. Inspect the `app/` folder to find current modules:
 	- `app/data-layer/` contains data access and models.
 	- `app/interface/` contains API endpoints and controllers.
-3. If you plan to add a separate backend or frontend, create `backend/` or `frontend/` directories at the repo root and add respective package manifests.
+3. To start `server` go to `app/data-layer` and run `npm run dev:watch` command.
+4. To view `interface` go to `app/data-layer` and run `npm run dev`.
 
 ## Roadmap
 
-- [x] Authentication with 2FA
-- [x] Dashboard module
-- [x] Product management with variants
-- [ ] Add `backend/` and `frontend/` scaffolding
+- [ ] Authentication with 2FA
+- [ ] Dashboard module
+- [ ] Product management with variants
 
 ## License
 
