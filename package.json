@@ -1,0 +1,25 @@
+{
+  "name": "commercium",
+  "version": "1.0.0",
+  "description": "Commercium is a modular commerce admin platform focused on clean, testable building blocks for commerce features. The repository currently contains core app modules under an `app/` directory; additional backend and frontend scaffolding may be added later.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdityaPathak-AI/commercium.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AdityaPathak-AI/commercium/issues"
+  },
+  "homepage": "https://github.com/AdityaPathak-AI/commercium#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.11"
+  }
+}
