@@ -1,0 +1,4 @@
+install prisma and design db
+create one global handler with stack trace
+hmac verification for every data-layer api
+ci/cd pipeline aka github actions
