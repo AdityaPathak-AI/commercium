@@ -1,0 +1,21 @@
+services:
+
+  backend:
+    build:
+      context: ./app/data-layer
+      dockerfile: Dockerfile
+    container_name: commercium-backend
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./app/interface
+      dockerfile: Dockerfile
+    container_name: commercium-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
